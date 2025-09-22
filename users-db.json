@@ -1,5 +1,10 @@
-{
-    "sergionoh":"adkhfiuw43qy3y4586tasgbkabjag",
-    "sanp":"adkhfiuw43qy3y4586tasgbkabjag",
-    "naspyrrhic":"adkhfiuw43qy3y4586tasgbkabjag"
-}
+[
+    {
+        "username": "fernando",
+        "password": "cc89f677690768136b380f6de8f5db2d:c97878f440668b3d1e4b6a93db962f41b93f774c8aa489719cc5970e7e1124cd"
+    },
+    {
+        "username": "luis",
+        "password": "5f9aca504d9d0cb85569ee32e7c0aa57:587180d25ff7d7f6855e6dce91e1659744bad4d049c8fa20133ab82f53def7ed"
+    }
+]

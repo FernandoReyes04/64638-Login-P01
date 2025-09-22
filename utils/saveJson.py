@@ -1,7 +1,8 @@
 import json
 import os
 
-def guardar_diccionario(datos, nombre_archivo):
+def guardar_datos(datos, nombre_archivo):
+    """Guarda una lista o diccionario en un archivo JSON."""
     try:
         with open(nombre_archivo, 'w', encoding='utf-8') as archivo:
             json.dump(datos, archivo, ensure_ascii=False, indent=4)
@@ -11,22 +12,20 @@ def guardar_diccionario(datos, nombre_archivo):
         print(f"Error al guardar: {e}")
         return False
 
-def cargar_diccionario(nombre_archivo):
+def cargar_datos(nombre_archivo):
+    """Carga datos (lista o diccionario) desde un archivo JSON."""
     try:
-        if not os.path.exists(nombre_archivo):
-            print("El archivo no existe")
-            return {}
+        if not os.path.exists(nombre_archivo) or os.path.getsize(nombre_archivo) == 0:
+            print(f"El archivo {nombre_archivo} no existe o está vacío. Se creará uno nuevo al guardar.")
+            return []  # ### CAMBIO CLAVE: Devuelve una lista vacía
             
         with open(nombre_archivo, 'r', encoding='utf-8') as archivo:
             datos = json.load(archivo)
         print(f"Datos cargados exitosamente desde {nombre_archivo}")
         return datos
+    except json.JSONDecodeError:
+        print(f"Error: El archivo {nombre_archivo} está malformado. Se creará uno nuevo.")
+        return []
     except Exception as e:
         print(f"Error al cargar: {e}")
-        return {}
-
-# Uso de las funciones
-# mi_diccionario = {"clave": "valor", "numero": 42, "lista": [1, 2, 3]}
-# guardar_diccionario(mi_diccionario, "users-db.json")
-# datos_cargados = cargar_diccionario("users-db.json")
-# print(datos_cargados)
+        return [] 
